@@ -1,12 +1,11 @@
 "use strict";
 
-/**
- * event controller
- */
+// ! Strapi Base
+// const { createCoreController } = require("@strapi/strapi").factories;
+// module.exports = createCoreController("api::event.event");
 
+// ! Custom Events Endpoint - me
 const { createCoreController } = require("@strapi/strapi").factories;
-
-// module.exports = createCoreController('api::event.event');
 module.exports = createCoreController("api::event.event", ({ strapi }) => ({
   // Get logged in users
   async me(ctx) {
@@ -24,6 +23,7 @@ module.exports = createCoreController("api::event.event", ({ strapi }) => ({
       },
       populate: { user: true, image: true },
     });
+    console.log("userID", user.id);
     if (!data) {
       return ctx.notFound();
     }
@@ -33,4 +33,5 @@ module.exports = createCoreController("api::event.event", ({ strapi }) => ({
   },
 }));
 
-//https://docs.strapi.io/developer-docs/latest/development/backend-customization/controllers.html#attaching-a-controller-to-a-route
+// * Reference
+// https://docs.strapi.io/developer-docs/latest/development/backend-customization/controllers.html#attaching-a-controller-to-a-route
