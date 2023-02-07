@@ -18,13 +18,16 @@ module.exports = createCoreController("api::event.event", ({ strapi }) => ({
         { message: "No authorization header was found" },
       ]);
     }
-
+    // findOne
+    // orderBy: default: desc (내림차순)
+    /**
+     * orderBy: {
+     *   date: "asc",
+     * },
+     */
     const data = await strapi.db.query("api::event.event").findOne({
       where: {
         users: user.id,
-      },
-      orderBy: {
-        date: "asc",
       },
       populate: { user: true, image: true },
     });
