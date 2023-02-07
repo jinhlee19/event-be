@@ -8,8 +8,8 @@ module.exports = {
   routes: [
     {
       method: "GET",
-      path: "/events/me",
-      handler: "event.me",
+      path: "/events",
+      handler: "event.getEvents",
       config: {},
     },
   ],
