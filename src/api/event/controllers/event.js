@@ -10,7 +10,7 @@ module.exports = createCoreController("api::event.event", ({ strapi }) => ({
   // 이벤트 리스트 조회
   async getEvents(ctx) {
     const user = ctx.state.user;
-    console.log(ctx.state);
+    // console.log(ctx.state);
     if (!user) {
       return ctx.badRequest(null, [
         { message: "No authorization header was found" },
@@ -35,6 +35,7 @@ module.exports = createCoreController("api::event.event", ({ strapi }) => ({
 
     if (!data) {
       return ctx.notFound();
+      // return;
     }
 
     const res = await this.sanitizeOutput(data, ctx);
